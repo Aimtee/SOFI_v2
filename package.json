@@ -1,0 +1,91 @@
+{
+  "name": "configurateur-audio-mid",
+  "version": "1.0.0",
+  "description": "Configurateur Audio MID Audio - Application de configuration audio professionnelle",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": [
+    "audio",
+    "configuration",
+    "professionnel",
+    "electron",
+    "desktop"
+  ],
+  "author": "MID Audio",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.midaudio.configurateur",
+    "productName": "Configurateur Audio MID Audio",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "!dist/**/*",
+      "!build/**/*",
+      "!*.md",
+      "!package-lock.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "node_modules/@electron/remote",
+        "to": "node_modules/@electron/remote"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "datasheets",
+        "to": "datasheets"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/@electron/remote",
+        "to": "node_modules/@electron/remote"
+      }
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "logo-mid.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Configurateur Audio MID Audio"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "logo-mid.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "logo-mid.png"
+    }
+  },
+  "dependencies": {
+    "@electron/remote": "^2.1.3"
+  }
+}
