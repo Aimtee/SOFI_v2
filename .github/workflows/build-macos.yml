@@ -1,0 +1,65 @@
+name: Build SOFI .dmg for macOS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build application for macOS
+      run: npm run build:mac
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload macOS build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: sofi-macos-dmg
+        path: dist/
+        retention-days: 30
+
+    - name: Create Release
+      if: github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*.dmg
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        tag_name: v${{ github.run_number }}
+        name: SOFI macOS Release v${{ github.run_number }}
+        body: |
+          ## SOFI - Application de configuration audio professionnelle
+          
+          ### Version : ${{ github.run_number }}
+          
+          ### Fichier inclus :
+          - **SOFI.dmg** - Installateur macOS
+          
+          ### Installation :
+          1. Téléchargez le fichier .dmg
+          2. Double-cliquez pour monter l'image disque
+          3. Glissez SOFI dans le dossier Applications
+          4. Lancez l'application depuis Applications
+          
+          ### Développement :
+          Interface développée par Tardieu Maxime, propriété intellectuelle de MiD AUDIO.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
