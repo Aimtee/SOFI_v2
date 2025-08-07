@@ -27,8 +27,8 @@ function createWindow() {
             enableRemoteModule: false,
             webSecurity: true
         },
-        icon: path.join(__dirname, 'logo-mid.png'),
-        title: 'Configurateur Audio MID Audio',
+        icon: path.join(__dirname, 'sofi-icone.png'),
+        title: 'SOFI',
         show: false // Ne pas afficher jusqu'à ce que la page soit prête
     });
 
@@ -187,8 +187,8 @@ const template = [
                     dialog.showMessageBox(mainWindow, {
                         type: 'info',
                         title: 'À propos',
-                        message: 'Configurateur Audio MID Audio',
-                        detail: 'Version 1.0.0\n\nApplication de configuration audio professionnelle.\nDéveloppée avec Electron et les technologies web.'
+                        message: 'SOFI',
+                        detail: 'Version 2.0.0\n\nApplication de configuration audio professionnelle.\nDéveloppée avec Electron et les technologies web.'
                     });
                 }
             }
