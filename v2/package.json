@@ -21,6 +21,10 @@
   ],
   "author": "SOFI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimtee/SOFI_v2.git"
+  },
   "devDependencies": {
     "electron": "^28.0.0",
     "electron-builder": "^24.13.3"
@@ -29,7 +33,7 @@
     "appId": "com.sofi.configurateur",
     "productName": "SOFI",
     "directories": {
-      "output": "dist"
+      "output": "dist-v2"
     },
     "files": [
       "**/*",
