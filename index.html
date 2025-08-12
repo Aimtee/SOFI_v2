@@ -24,11 +24,16 @@
 
     <div class="container">
         <header>
-            <div class="logo-container">
-                <img src="logo-mid.png" alt="SOFI" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="logo-fallback" style="display:none; font-size: 2.5rem; font-weight: bold; color: #2d2d2d;">SOFI</div>
+            <div class="theme-toggle-container">
+                <button id="themeToggle" class="theme-toggle-btn" title="Basculer entre mode clair et sombre">
+                    <span class="theme-icon">🌙</span>
+                </button>
             </div>
-            <h1>SOFI</h1>
+            <div class="logo-container">
+                <img src="logo_sofi_black.png" alt="SOFI" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-fallback" style="display:none; font-size: 2.5rem; font-weight: bold;">SOFI</div>
+            </div>
+            <img src="sofi.png" alt="SOFI" class="title-image">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
